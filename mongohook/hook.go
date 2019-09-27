@@ -140,6 +140,12 @@ func (h *Hook) Levels() []logrus.Level {
 
 // Fire 触发日志事件时将调用
 func (h *Hook) Fire(entry *logrus.Entry) error {
+
+	funcVal := entry.Caller.Function
+	fileVal := fmt.Sprintf("%s:%d", entry.Caller.File, entry.Caller.Line)
+	entry.Data["func"] = funcVal
+	entry.Data["file"] = fileVal
+
 	entry = h.copyEntry(entry)
 	h.q.Push(queue.NewJob(entry, func(v interface{}) {
 		h.exec(v.(*logrus.Entry))
