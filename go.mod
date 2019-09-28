@@ -1,6 +1,6 @@
 module github.com/pm-esd/logger
 
-go 1.12
+go 1.13
 
 require (
 	github.com/pm-esd/mongodb v1.0.5
