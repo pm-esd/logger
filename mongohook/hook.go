@@ -115,7 +115,8 @@ func New(opt ...Option) *Hook {
 	}
 
 	if opts.exec == nil {
-		panic("Unknown Execer interface implementation")
+		// panic("Unknown Execer interface implementation")
+		logrus.Info("Unknown Execer interface implementation")
 	}
 
 	q := queue.NewQueue(opts.maxQueues, opts.maxWorkers)
