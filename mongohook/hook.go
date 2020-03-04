@@ -4,6 +4,9 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"path"
+	"runtime"
+	"strings"
 
 	"github.com/pm-esd/mongodb"
 	"github.com/pm-esd/queue"
@@ -142,10 +145,32 @@ func (h *Hook) Levels() []logrus.Level {
 // Fire 触发日志事件时将调用
 func (h *Hook) Fire(entry *logrus.Entry) error {
 	if entry.HasCaller() {
-		funcVal := entry.Caller.Function
-		fileVal := fmt.Sprintf("%s:%d", entry.Caller.File, entry.Caller.Line)
-		entry.Data["func"] = funcVal
-		entry.Data["file"] = fileVal
+		// funcVal := entry.Caller.Function
+		// fileVal := fmt.Sprintf("%s:%d", entry.Caller.File, entry.Caller.Line)
+		// entry.Data["func"] = funcVal
+		// entry.Data["file"] = fileVal
+
+		pc := make([]uintptr, 3, 3)
+		cnt := runtime.Callers(6, pc)
+		for i := 0; i < cnt; i++ {
+			fu := runtime.FuncForPC(pc[i] - 1)
+			name := fu.Name()
+			if !strings.Contains(name, "github.com/sirupsen/logrus") {
+				file, line := fu.FileLine(pc[i] - 1)
+				fileVal := fmt.Sprintf("%s:%d", file, line)
+				entry.Data["file"] = fileVal
+				entry.Data["func"] = path.Base(name)
+
+				break
+			} else {
+				if pc, file, line, ok := runtime.Caller(8); ok {
+					funcName := runtime.FuncForPC(pc).Name()
+					fileVal := fmt.Sprintf("%s:%d", file, line)
+					entry.Data["file"] = fileVal
+					entry.Data["func"] = path.Base(funcName)
+				}
+			}
+		}
 	}
 
 	entry = h.copyEntry(entry)
