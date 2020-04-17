@@ -53,8 +53,8 @@ github.com/pelletier/go-toml v1.4.0/go.mod h1:PN7xzY2wHTK0K9p34ErDQMlFxa51Fk0OUr
 github.com/pkg/errors v0.8.0/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pkg/errors v0.8.1 h1:iURUrRGxPUNPdy5/HRSm+Yj6okJ6UtLINN0Q9M4+h3I=
 github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
-github.com/pm-esd/mongodb v1.1.9 h1:+0xJJLhanV+lVs2Nn/0OtHqUAPu4UpcpJi2JGitAto8=
-github.com/pm-esd/mongodb v1.1.9/go.mod h1:Oq2sIBmgdwahEsEhqzby5v3uHTkXxSXuhnDf/rzWEdE=
+github.com/pm-esd/mongodb v1.2.0 h1:K+EGaD1VKO87YMbOaJU2hfn2oF48QXDLyvJKlhh3GFc=
+github.com/pm-esd/mongodb v1.2.0/go.mod h1:Oq2sIBmgdwahEsEhqzby5v3uHTkXxSXuhnDf/rzWEdE=
 github.com/pm-esd/queue v1.0.1 h1:s5Nb60rqVl6fgYQAI4GAdMuuwgRIM1s35XwKZ0lWc2U=
 github.com/pm-esd/queue v1.0.1/go.mod h1:9kjQZpjaLAnLquaACkf7WDTaui28FuZLIQQ6M6UUi64=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
