@@ -148,6 +148,13 @@ func (h *Hook) Fire(entry *logrus.Entry) error {
 		entry.Data["file"] = fileVal
 	}
 
+	hostName, err := os.Hostname()
+	if err != nil {
+		hostName = "unknown"
+	}
+
+	entry.Data["hostname"] = hostName
+
 	entry = h.copyEntry(entry)
 	h.q.Push(queue.NewJob(entry, func(v interface{}) {
 		h.exec(v.(*logrus.Entry))
