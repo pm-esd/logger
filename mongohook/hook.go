@@ -5,7 +5,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/pm-esd/mongodb"
+	"github.com/pm-esd/mongodb/v2"
 	"github.com/pm-esd/queue"
 	"github.com/sirupsen/logrus"
 )
