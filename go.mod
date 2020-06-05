@@ -1,4 +1,4 @@
-module github.com/pm-esd/logger
+module github.com/pm-esd/logger/v2
 
 go 1.14
 
