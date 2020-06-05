@@ -1,9 +1,7 @@
-package mongohook
+package logger
 
 import (
-	"context"
-
-	"github.com/pm-esd/mongodb/v2"
+	"github.com/pm-esd/mongodb"
 	"github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/bson"
 )
@@ -48,7 +46,8 @@ func (e *defaultExec) Exec(entry *logrus.Entry) error {
 	item["message"] = entry.Message
 	item["created"] = entry.Time.Unix()
 
-	_, err := e.sess.Collection(e.cName).InsertOne(context.Background(), item)
+	// _, err := e.sess.Collection(e.cName).InsertOne(context.Background(), item)
+	_, err := e.sess.Collection(e.cName).InsertOne(item)
 	if err != nil {
 		return err
 	}
