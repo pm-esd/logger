@@ -48,8 +48,8 @@ func (e *defaultExec) Exec(entry *logrus.Entry) error {
 	item["message"] = entry.Message
 	item["created"] = entry.Time.Unix()
 
-	_, err := e.sess.Collection(e.cName).InsertOne(context.Background(), item)
-	// _, err := e.sess.Collection(e.cName).InsertOne(item)
+	ctx := context.Background()
+	_, err := e.sess.Collection(e.cName).InsertOne(ctx, item)
 	if err != nil {
 		return err
 	}
